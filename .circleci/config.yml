@@ -1,16 +1,16 @@
 version: 2.1
 
 jobs:
+  test:
+    docker:
+      - image: cimg/base:2022.05
+    steps:
+      - command: make test
   build:
     docker:
       - image: cimg/base:2022.05
     steps:
       - run: echo "hello world"
-  test:
-    docker:
-      - image: cimg/base:2022.05
-    steps:
-      - run: make test
 
 workflows:
   build1AndBuild2:
