@@ -6,16 +6,16 @@ jobs:
       - image: cimg/base:2022.05
     steps:
       - run: echo "hello world"
-  build2:
+  test:
     docker:
       - image: cimg/base:2022.05
     steps:
-      - run: echo "hello world 222"
+      - run: make test
 
 workflows:
   build1AndBuild2:
     jobs:
-      - build
-      - build2:
+      - test
+      - build:
           requires:
-            - build
+            - test
