@@ -1,11 +1,20 @@
 version: 2.1
 
+executors:
+  vm:
+    machine:
+      image: ubuntu-2004:2024.01.2
+      docker_layer_caching: true
+
 jobs:
   test:
-    docker:
-      - image: cimg/base:2022.05
+    <<: &defaults
+    executor: vm
     steps:
-      - command: make test
+      - run:
+          name: Run lint checks
+          command: make test
+
   build:
     docker:
       - image: cimg/base:2022.05
