@@ -12,6 +12,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
           name: Run lint checks
           command: make test
 
